@@ -8,7 +8,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.google.android.material.navigation.NavigationView;
@@ -48,6 +50,7 @@ public class HomeActivity extends AppCompatActivity {
     NavigationView navigationView;
 
 
+
     List<MovieModelClass> movieList;
 
     @Override
@@ -56,6 +59,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         setUpToolbar();
+        bottomNavigation();
 
         navigationView = (NavigationView) findViewById(R.id.navigation_menu);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -83,6 +87,19 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    private void bottomNavigation() {
+        LinearLayout homeBtn = findViewById(R.id.home_btn);
+
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, HomeActivity.class));
+
+            }
+        });
+
+    }
+
     public void setUpToolbar() {
         drawerLayout = findViewById(R.id.drawerLayout);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -92,6 +109,8 @@ public class HomeActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
 
     }
+
+
 
     public class GetData extends AsyncTask<String, String, String>{
 

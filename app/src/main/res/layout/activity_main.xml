@@ -38,6 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/usernameInput"
         android:hint="Enter Password"
         android:layout_margin="20dp"
+        android:inputType="textPassword"
         />
 
     <Button android:id="@+id/buttonLogin"
