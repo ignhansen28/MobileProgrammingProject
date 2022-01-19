@@ -6,83 +6,73 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
-    <android.support.v4.widget.DrawerLayout
-        xmlns:android="https://schemas.android.com/apk/res/android"
-        android:id="@+id/drawer_layout"
+    <androidx.drawerlayout.widget.DrawerLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:id="@+id/drawerLayout"
+        android:fitsSystemWindows="true"
+        android:background="#F7FFFFFF"
+        android:minWidth="19dp">
 
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:background="#F7FFFFFF"
+            android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/container_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#F7FFFFFF"
                 android:orientation="vertical">
 
-                <include
+                <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
-                    layout="@layout/toolbar" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#F7FFFFFF"
+                    app:subtitleTextColor="#0A0A0A"
+                    app:titleTextColor="#111111" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tablayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Popular" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Top Rated" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Latest" />
+                </com.google.android.material.tabs.TabLayout>
+
+                <ListView
+                    android:id="@+id/listView"
+                    android:layout_width="411dp"
+                    android:layout_height="512dp">
+                </ListView>
+
+
             </LinearLayout>
-
-
-            <FrameLayout
-                android:id="@+id/content_frame"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </LinearLayout>
-
-        <ListView
-            android:id="@+id/left_drawer"
-            android:layout_width="240dp"
+        </ScrollView>
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigation_menu"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            android:background="#FFFFFF"
-            android:choiceMode="singleChoice"
-            android:divider="@android:color/darker_gray"
-            android:dividerHeight="1dp" />
-
-    </android.support.v4.widget.DrawerLayout>
-
-    <com.google.android.material.tabs.TabLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tablayout">
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Popular" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Top Rated" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Latest" />
-    </com.google.android.material.tabs.TabLayout>
-
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="411dp"
-        android:layout_height="512dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tablayout" >
-
-    </ListView>
-
-
-
+            app:headerLayout="@layout/header"
+            app:menu="@menu/drawer_menu">
+        </com.google.android.material.navigation.NavigationView>
+    </androidx.drawerlayout.widget.DrawerLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
